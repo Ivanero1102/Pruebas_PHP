@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <form method="get" action="Conversor_Monedas_Select.php">
+            <label for="money"> Dinero: </label>
+            <input type="number" name="money" required></input>
+            <p>Moneda a la que desea convertirlo<br></p>
+            <select name="moneda">
+                <option value="bitcoin">bitcoin</option>
+                <option value="dolar">dolar americano</option>
+                <option value="libra">libra esterlina</option>
+                <option value="yen">yen japones</option>
+            </select>
+            <p><input type="submit" name="botonEnviar" value="Enviar datos"></p>
+        </form>
+    </body>
+</html>
