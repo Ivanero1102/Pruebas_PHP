@@ -1,7 +1,8 @@
 <?php  
 
     $dinero = $_GET['money'];
-    //$moneda = $_GET['moneda'];
+    //print_r($_GET);
+    //echo $_GET['moneda'][0];
     foreach($_GET['moneda'] as $valor => $number){
         switch ($number) {
             case 'bitcoin':
