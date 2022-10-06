@@ -4,6 +4,9 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="Piedra_Papel_Tijera_V1.css"/>
         <?php
+            session_start();
+            $_SESSION['jugador'];
+            $_SESSION['maquina'];
             function punto_jugador(&$jugador){
                 $jugador++;
             }
@@ -14,10 +17,6 @@
     </head>
     <body>
         <div class="marcador">
-            <?php
-                $jugador = 0;
-                $maquina = 0;
-                echo "
                     <table>
                         <tr>
                             <th>
@@ -29,15 +28,17 @@
                         </tr>
                         <tr>
                             <th>
-                                $jugador
+                                <?php
+                                echo $_SESSION['jugador'];
+                                ?>
                             </th>
                             <th>
-                                $maquina                            
+                                <?php
+                                echo $_SESSION['maquina'];
+                                ?>                            
                             </th>
                         </tr>
                     </table>
-                ";
-            ?>
         </div>
         <div class="contenedor">
             <form method="post" action="Piedra_Papel_Tijera_V1.php">
@@ -85,10 +86,10 @@
                 }else{
                     if(($eleccion==1 and $random ==2) or ($eleccion==2 and $random ==3) or ($eleccion==3 and $random ==1)){
                         echo "perdiste";
-                        punto_maquina($maquina);
+                        punto_maquina($_SESSION['maquina']);
                     }else{
                         echo "ganaste";
-                        punto_jugador($jugador);
+                        punto_jugador($_SESSION['jugador']);
                     }
                 }
              }
