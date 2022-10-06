@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="Piedra_Papel_Tijera_V1.css"/>
         <?php
+        
             session_start();
-            $_SESSION['jugador'];
-            $_SESSION['maquina'];
+            error_reporting(0);
             function punto_jugador(&$jugador){
                 $jugador++;
             }
@@ -29,7 +29,11 @@
                         <tr>
                             <th>
                                 <?php
-                                echo $_SESSION['jugador'];
+                                    if(is_null($_SESSION['jugador']) == true){
+                                        echo "0";
+                                    }else{
+                                    echo $_SESSION['jugador'];
+                                    }
                                 ?>
                             </th>
                             <th>
