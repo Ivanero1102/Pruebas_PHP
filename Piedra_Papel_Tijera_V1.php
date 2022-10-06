@@ -38,7 +38,11 @@
                             </th>
                             <th>
                                 <?php
-                                echo $_SESSION['maquina'];
+                                if(is_null($_SESSION['maquina']) == true){
+                                        echo "0";
+                                    }else{
+                                    echo $_SESSION['maquina'];
+                                    }
                                 ?>                            
                             </th>
                         </tr>
