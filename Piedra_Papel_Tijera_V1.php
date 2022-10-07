@@ -20,6 +20,32 @@
                 $_SESSION['eleccion_jugador'] = "";
                 $_SESSION['random'] = 0;
             }
+            function selector_jugador(){
+                switch ($_SESSION['eleccion']) {
+                    case 1:
+                        $_SESSION['eleccion_jugador'] = "Piedra";
+                        break;
+                    case 2:
+                        $_SESSION['eleccion_jugador'] = "Papel";
+                        break;
+                    case 3:
+                        $_SESSION['eleccion_jugador'] = "Tijera";
+                        break;
+                }
+            }
+            function selector_maquina(){
+                switch ($_SESSION['random']) {
+                    case 1:
+                        $_SESSION['eleccion_maquina'] = "Piedra";
+                        break;
+                    case 2:
+                        $_SESSION['eleccion_maquina'] = "Papel";
+                        break;
+                    case 3:
+                        $_SESSION['eleccion_maquina'] = "Tijera";
+                        break;
+                }
+            }
         ?>
     </head>
     <body>
@@ -89,20 +115,12 @@
             }
         }
             if ($_SESSION['maquina']== 3 ) {
-                $_SESSION['maquina'] = 0;
-                $_SESSION['jugador'] = 0;
-                $_SESSION['eleccion_maquina'] = "";
-                $_SESSION['eleccion_jugador'] = "";
-                $_SESSION['random'] = 0;
-                echo '<script>document.location = "Piedra_Papel_Tijera_Perdiste.php"</script>';
+                reinicio();
+                echo '<script>document.location = "Piedra_Papel_Tijera_Perdiste.html"</script>';
             }else{
                 if ($_SESSION['jugador'] == 3 ) {
-                    $_SESSION['maquina'] = 0;
-                    $_SESSION['jugador'] = 0;
-                    $_SESSION['eleccion_maquina'] = "";
-                    $_SESSION['eleccion_jugador'] = "";
-                    $_SESSION['random'] = 0;
-                    echo '<script>document.location = "Piedra_Papel_Tijera_Ganaste.php"</script>';
+                    reinicio();
+                    echo '<script>document.location = "Piedra_Papel_Tijera_Ganaste.html"</script>';
                 }
             }
              if(isset($_POST['PPT'])){
@@ -110,28 +128,8 @@
                 $_SESSION['random'] = rand(1,3);;
                 $_SESSION['eleccion_maquina']= "";
                 $_SESSION['eleccion_jugador']= "";
-                switch ($_SESSION['random']) {
-                    case 1:
-                        $_SESSION['eleccion_maquina'] = "Piedra";
-                        break;
-                    case 2:
-                        $_SESSION['eleccion_maquina'] = "Papel";
-                        break;
-                    case 3:
-                        $_SESSION['eleccion_maquina'] = "Tijera";
-                        break;
-                }
-                switch ($_SESSION['eleccion']) {
-                    case 1:
-                        $_SESSION['eleccion_jugador'] = "Piedra";
-                        break;
-                    case 2:
-                        $_SESSION['eleccion_jugador'] = "Papel";
-                        break;
-                    case 3:
-                        $_SESSION['eleccion_jugador'] = "Tijera";
-                        break;
-                }
+                selector_maquina();
+                selector_jugador();
                 if ($_SESSION['eleccion'] == $_SESSION['random']) {
                 }else{
                     if(($_SESSION['eleccion']==1 and $_SESSION['random'] ==2) or ($_SESSION['eleccion']==2 and $_SESSION['random'] ==3) or ($_SESSION['eleccion']==3 and $_SESSION['random'] ==1)){
