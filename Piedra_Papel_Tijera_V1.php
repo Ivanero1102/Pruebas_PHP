@@ -13,6 +13,13 @@
             function punto_maquina(&$maquina){
                 $maquina++;
             }
+            function reinicio(){
+                $_SESSION['maquina'] = 0;
+                $_SESSION['jugador'] = 0;
+                $_SESSION['eleccion_maquina'] = "";
+                $_SESSION['eleccion_jugador'] = "";
+                $_SESSION['random'] = 0;
+            }
         ?>
     </head>
     <body>
@@ -69,6 +76,7 @@
             echo "<div class='contenedor'>";
             echo "JUGADOR: " .$_SESSION['eleccion_jugador']. " <br>";
             echo "MAQUINA: " .$_SESSION['eleccion_maquina']. " <br>";
+        if ($_SESSION['eleccion']<4 && $_SESSION['eleccion']>0 && $_SESSION['random']<4 && $_SESSION['random']>0) {
          if ($_SESSION['eleccion'] == $_SESSION['random']) {
             echo "empate";
             }else{
@@ -78,6 +86,24 @@
                 echo "ganaste";
             }
             echo "</div>";
+            }
+        }
+            if ($_SESSION['maquina']== 3 ) {
+                $_SESSION['maquina'] = 0;
+                $_SESSION['jugador'] = 0;
+                $_SESSION['eleccion_maquina'] = "";
+                $_SESSION['eleccion_jugador'] = "";
+                $_SESSION['random'] = 0;
+                echo '<script>document.location = "Piedra_Papel_Tijera_Perdiste.php"</script>';
+            }else{
+                if ($_SESSION['jugador'] == 3 ) {
+                    $_SESSION['maquina'] = 0;
+                    $_SESSION['jugador'] = 0;
+                    $_SESSION['eleccion_maquina'] = "";
+                    $_SESSION['eleccion_jugador'] = "";
+                    $_SESSION['random'] = 0;
+                    echo '<script>document.location = "Piedra_Papel_Tijera_Ganaste.php"</script>';
+                }
             }
              if(isset($_POST['PPT'])){
                 $_SESSION['eleccion'] = (int)$_POST['PPT'];
@@ -112,13 +138,6 @@
                         punto_maquina($_SESSION['maquina']);
                     }else{
                         punto_jugador($_SESSION['jugador']);
-                    }
-                }
-                if ($_SESSION['maquina']== 3 ) {
-                        header("location:/Piedra_Papel_Tijera_Perdiste.php");
-                }else{
-                    if ($_SESSION['jugador'] == 3 ) {
-                        header("location:/Piedra_Papel_Tijera_Ganaste.php");
                     }
                 }
                 header("location:Piedra_Papel_Tijera_V1.php");
