@@ -13,12 +13,15 @@
                 $num_paredes = 10;
                 $num_elementos = $num_coches + $num_bombas + $num_paredes;
                 while(count($elementos)<=$num_elementos){
-                    $comprobar= false;
+                    $comprobar = true;
                     $x = rand(0,9);
                     $y = rand(0,9);
-                    for($i= 0;$i<=count($elementos);$i++){
-                        if(){
-                            $comprobar = true;
+                    foreach ($elementos as $key => $value) {
+                        if($x == $value[0] and $y == $value[1]){
+                            $comprobar = false;
+                        }
+                        if($x == 9 and $y == 9){
+                            $comprobar = false;
                         }
                     }
                     if($comprobar == true){
@@ -33,18 +36,24 @@
         <table>
             <!-- Codigo php para general el tablero aleatorio -->
             <?php
-                echo "<pre>";
                 $elementos = random();
-                print_r($elementos);
-                echo "</pre>";
+                $clase = "vacio";
+                //print_r(array_values(array_values($elementos[0]))[0]);
                 for($i=0; $i<1; $i++){
                     $posy = 0;
                     for ($t=0; $t<10 ; $t++) {
                         $posx = 0;
                         echo "<tr>";
                         for ($s=0; $s <10 ; $s++) { 
-                            echo "<td> x:$posx y:$posy</td>";
+                            if($posx == 9 and $posy == 9){
+                                $clase = "meta";
+                            }
+                            if($posx == array_values(array_values($elementos[0]))[0] and $posy == array_values(array_values($elementos[0]))[1]){
+                                $clase = "coche";
+                            }
+                            echo "<td class='$clase'> x:$posx y:$posy </td>";
                             $posx++;
+                            $clase = "vacio";
                         }
                         echo "</tr>";
                         $posy++;

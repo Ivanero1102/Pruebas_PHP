@@ -14,3 +14,23 @@ td{
     width: 10%;
     border: solid;
 }
+
+.vacio{
+    background-color: violet;
+}
+
+.meta{
+    background-color: green;
+}
+
+.coche{
+    background-color: yellow;
+}
+
+.muro{
+    background-color: black;
+}
+
+.bomba{
+    background-color: red;
+}
