@@ -1,0 +1,16 @@
+table{
+    height: 300px;
+    width: 300px;
+    border:solid;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+tr{
+    height: 10%;
+}
+
+td{
+    width: 10%;
+    border: solid;
+}
