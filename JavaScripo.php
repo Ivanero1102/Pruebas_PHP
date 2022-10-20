@@ -25,21 +25,12 @@
             echo "<script> prueba() </script>";
         }else{
             $_SESSION['count']++;
+            if(isset($_GET["w1"])){
+                $prueba = $_GET["w1"];
+                echo $prueba;
+            }
         } 
 
-        if(isset($_GET["w1"])){
-            $prueba = $_GET["w1"];
-            echo $prueba;
-        }
         ?>
-        <script type="text/javascript"> 
-        function prueba(){
-            var hi = 4 
-            var e = "<?php echo $num ?>";
-            alert (e);
-            var a = 9;
-            window.location.href = window.location.href + "?w1 =" + a;
-        }
-        </script>
     </body>
 </html>
