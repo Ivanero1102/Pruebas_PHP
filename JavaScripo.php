@@ -2,13 +2,15 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Ejercicio1</title>
+        <title>Pruebas para Coche</title>
     </head>
     <body>
         <?php
+        //Creo una variable en php
         $num = 0;
         ?>  
         <script type="text/javascript"> 
+        //Creo la funcion prueba()
         function prueba(){
             var hi = 4 
             //Paso de variable desde php hasta js
@@ -17,6 +19,7 @@
             alert (e);
             //Inicio del paso de variable desde php js hasta php
             var a = 9;
+            //El escrip introtuce la variable y el valor que quiero en la url
             window.location.href = window.location.href + "?w1=" + a;
         }
         </script>
@@ -27,7 +30,7 @@
         if(!isset($_SESSION['count'])){
             //Le doy  valor a count
             $_SESSION['count']= 0;
-            //El escrip introtuce la variable y el valor que quiero en la url
+            //Llamo a la funcion prueb()
             echo "<script> prueba() </script>";
         }else{
             $_SESSION['count']++;
