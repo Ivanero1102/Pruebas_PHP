@@ -20,7 +20,9 @@
             //Inicio del paso de variable desde php js hasta php
             var a = 9;
             //El escrip introtuce la variable y el valor que quiero en la url
+
             window.location.href = window.location.href + "?w1=" + a;
+            //De recogida hacer un array k pille siempre el ulto elemento del arrray o almacenar la href original en una variable
         }
         </script>
         <?php
@@ -33,14 +35,17 @@
             //Llamo a la funcion prueb()
             echo "<script> prueba() </script>";
         }else{
-            $_SESSION['count']++;
-            //Tras el primer refresco agrego valor a la variable
-            if($_SESSION['count'] == 1){
-                //Guardo la variable del $_GET en cache para poder comprobar k funciono
-                $_SESSION['js'] = $_GET["w1"];
+            if( $_SESSION['count'] >= 0){
+                $_SESSION['count']++;
+                //Tras el primer refresco agrego valor a la variable
+                if($_SESSION['count'] == 1){
+                    //Guardo la variable del $_GET en cache para poder comprobar k funciono
+                    $_SESSION['js'] = $_GET["w1"];
+                    // header("location:Piedra_Papel_Tijera_V1.php");
+                }
+                //Imprimo la variable pasada desde js para comprobar que funciono
+                echo $_SESSION['js'];
             }
-            //Imprimo la variable pasada desde js para comprobar que funciono
-            echo $_SESSION['js'];
         }
         ?>
     </body>
